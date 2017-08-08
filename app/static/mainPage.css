@@ -1,0 +1,87 @@
+body {
+	background-color: rgba(93, 90, 90, 1.0);
+	overflow: hidden;
+}
+
+a {
+	text-decoration:none;
+}
+
+input[name=cenazl] {
+  width: 32px;
+}
+
+input[name=cenagr] {
+  width: 15px;
+}
+
+input[name=opis] {
+  width: 180px;
+}
+
+label[name=labelCheckbox] {
+  cursor: pointer;
+}
+
+input[type=checkbox] {
+  cursor: pointer;
+}
+
+input[type=submit] {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#tabs ul {
+padding: 0px;
+margin: 0px;
+margin-left: 10px;
+list-style-type: none;
+cursor: pointer;
+}
+
+#tabs ul li {
+display: inline-block;
+clear: none;
+float: left;
+height: 24px;
+}
+
+#tabs ul li a {
+position: relative;
+margin-top: 16px;
+display: block;
+margin-left: 6px;
+line-height: 24px;
+padding-left: 10px;
+background: #f6f6f6;
+z-index: 9999;
+border: 1px solid #ccc;
+border-bottom: 0px;
+-moz-border-radius-topleft: 4px;
+border-top-left-radius: 4px;
+-moz-border-radius-topright: 4px;
+border-top-right-radius: 4px;
+width: 130px;
+color: #000000;
+text-decoration: none;
+font-weight: bold;
+}
+
+#tabs ul li a:hover {
+text-decoration: underline;
+}
+
+#tabs #Content_Area {
+padding: 0 15px;
+clear:both;
+overflow:hidden;
+line-height:19px;
+position: relative;
+top: 20px;
+z-index: 5;
+height: 150px;
+overflow: hidden;
+}
+
+p { padding-left: 15px; }

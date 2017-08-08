@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for("static", filename="mainPage.css") }}">
+		<title>Pieniondz</title>
+    <script language="JavaScript" type="text/javascript" src="../static/jquery.2.2.4.min.js"></script>
+    <script type="text/javascript">
+    function tab(tab) {
+    document.getElementById('tab1').style.display = 'none';
+    document.getElementById('tab2').style.display = 'none';
+    document.getElementById('li_tab1').setAttribute("class", "");
+    document.getElementById('li_tab2').setAttribute("class", "");
+    document.getElementById(tab).style.display = 'block';
+    document.getElementById('li_'+tab).setAttribute("class", "active");
+    }
+    </script>
+	</head>
+	<body>
+    <div id="tabs">
+      <ul>
+        <li id="li_tab1" onclick="tab('tab1')"><a>Create</a></li>
+        <li id="li_tab2" onclick="tab('tab2')"><a>Summary</a></li>
+        <li id="li_tab2" onclick="tab('tab2')"><a>History</a></li>
+      </ul>
+      <div id="Content_Area">
+        <div id="tab1"><br>
+          <form id="confirm" name="createProduct" method="post" accept-charset="utf-8">
+          <section class="createform">
+            <input
+              form="confirm"
+              name="produkt"
+              placeholder="produkt"
+              autocapitalize="off"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              maxlength="28"
+              required >
+
+            <input
+              form="confirm"
+              name="cenazl"
+              placeholder="zł"
+              autocapitalize="off"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              maxlength="4"
+              pattern="[0-9]{1,4}"
+              value="0"
+              required >
+
+            <span> zł </span>
+
+            <input
+              form="confirm"
+              name="cenagr"
+              placeholder="gr"
+              autocapitalize="off"
+              autocomplete="off"
+              autocorrect="off"
+              spellcheck="false"
+              maxlength="2"
+              pattern="[0-9]{2,2}"
+              value="00"
+              required >
+
+            <span> gr </span><br>
+
+            <label name="labelCheckbox"><input type="checkbox" name="konChkBox" checked>Konrad</label><br>
+            <label name="labelCheckbox"><input type="checkbox" name="matChkBox" checked>Mateusz</label><br>
+            <label name="labelCheckbox"><input type="checkbox" name="szyChkBox" checked>Szymon</label><br>
+            <a href={{ url_for ("mainPage") }}> <input form="confirm" type="submit" value="Zapisz"> </a>
+
+          </section>
+        </div>
+
+        <div id="tab2" style="display: none;"><br>
+          <p>This is the text for tab 2.</p>
+        </div>
+        <div id="tab3" style="display: none;"><br>
+          <p>This is the text for tab 3.</p>
+        </div>
+      </div>
+    </div>
+	</body>
+</html>
