@@ -11,7 +11,6 @@ def mainPage():
         konChkBox = bool(request.form.getlist("konChkBox"))
         matChkBox = bool(request.form.getlist("matChkBox"))
         szyChkBox = bool(request.form.getlist("szyChkBox"))
-        print(konChkBox)
         return redirect(url_for("mainPage"))
 
 if __name__ == '__main__':
