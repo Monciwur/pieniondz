@@ -1,0 +1,20 @@
+body {
+	background-color: rgba(93, 90, 90, 1.0);
+	overflow: hidden;
+}
+
+a {
+	text-decoration:none;
+}
+
+.loginForm {
+	text-align: center;
+}
+
+.loginForm div {
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
