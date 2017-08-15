@@ -54,6 +54,10 @@ def showMatrix(matrix):
       print(matrix[i][y], end='  ')
     print("\n")
 
+@app.route("/")
+def redirectToMain():
+    return redirect(url_for("mainPage"))
+
 @app.route("/login/", methods=["GET", "POST"])
 def login():
     if request.method == "GET":
@@ -64,14 +68,71 @@ def login():
         login_user(user)
         return redirect(url_for("mainPage"))
 
-def test():
-    string = dataBase.showHistory()
-    result = None
+@app.route("/logout/", methods=["GET"])
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("login"))
+
+
+def printSpaces(howMany):
+    result = ""
+    for i in range(0, howMany):
+        result += "&nbsp;"
+    return result
+
+def makeNiceHistory(dataBase):
+    result = "Kupujący" + printSpaces(16) + "Produkt" + printSpaces(16) + "Cena" + printSpaces(30) +  "Data: <br>"
+    for i in range(0, len(dataBase)):
+        buyer = dataBase[i][0]
+        product = str(dataBase[i][1])
+        price = str(dataBase[i][2])
+        date = str(dataBase[i][6])
+
+        if dataBase[i][3] == 1:
+            test1 = "K"
+        if dataBase[i][4] == 1:
+            test2 = "M"
+        if dataBase[i][5] == 1:
+            test3 = "S"
+        result += (buyer + printSpaces(31 - len(buyer)*2) +
+            product + printSpaces(31 - len(product)*2) +
+            price[:-2] + "," + price[-2:] + "zł" +
+            printSpaces(31 - len(price)*2) +
+            date + printSpaces(31 - len(date))  + test1 + test2 +test3 + "<br>")
+        print(dataBase[i])
+        print(i)
+
+    return result
+
+'''
+def makeNiceHistory(dataBase):
+    result = ""
+    for i in range(0, len(dataBase)):
+        buyer = dataBase[i][0]
+        product = str(dataBase[i][1])
+        price = str(dataBase[i][2])
+        date = str(dataBase[i][6])
+
+        if dataBase[i][3] == 1:
+            test1 = "K"
+        if dataBase[i][4] == 1:
+            test2 = "M"
+        if dataBase[i][5] == 1:
+            test3 = "S"
+
+        result += (buyer + ": " + product + " " + price[:-2] + "," + price[-2:] + "zł" + test1 + test2 + test3 + date  +"<br>")
+        print(dataBase[i])
+        print(i)
+
+    return result
+'''
+
 @app.route("/pieniondz", methods=["GET", "POST"])
 @login_required
 def mainPage():
     if request.method == "GET":
-        return render_template("mainPage.html", history = dataBase.showHistory())
+        return render_template("mainPage.html", history = makeNiceHistory(dataBase.showHistory()))
 
     if request.method == "POST":
         payment = Payment()
@@ -85,4 +146,4 @@ def mainPage():
         return redirect(url_for("mainPage"))
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="192.168.1.103",port="5000")

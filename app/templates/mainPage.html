@@ -20,6 +20,11 @@
 	</head>
 	<body>
     <div id="tabs">
+			<form action = {{ url_for ("logout") }}>
+				<input
+					type="submit"
+					value="Log out">
+			</form>
       <ul>
         <li id="li_tab1" onclick="tab('tab1')"><a>Create</a></li>
         <li id="li_tab2" onclick="tab('tab2')"><a>Summary</a></li>
@@ -37,7 +42,7 @@
               autocomplete="off"
               autocorrect="off"
               spellcheck="false"
-              maxlength="28"
+              maxlength="15"
               required >
             <input
               form="confirm"
@@ -48,7 +53,7 @@
               autocorrect="off"
               spellcheck="false"
               maxlength="4"
-              pattern="[0-9]{1,4}"
+              pattern="^[1-9]{1}[0-9]{0,3}"
               value="0"
               required >
             <span> zł </span>
@@ -77,7 +82,7 @@
         </div>
 
         <div id="tab3" style="display: none;"><br>
-          <p>{{ history }}</p>
+          {{ history | safe }}
         </div>
 
       </div>

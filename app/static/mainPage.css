@@ -80,7 +80,6 @@ input[type=submit] {
   position: relative;
   top: 20px;
   z-index: 5;
-  height: 150px;
   overflow: hidden;
 }
 
